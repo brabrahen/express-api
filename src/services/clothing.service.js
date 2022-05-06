@@ -31,8 +31,8 @@ const findClothingService = () => {
   return clothes;
 };
 
-const findClothingByIdService = (id) => {
-  return clothes.find((clothe) => clothe.id == id);
+const findClothingByIdService = (idParam) => {
+  return clothes.find((clothes) => clothes.id == idParam);
 };
 
 module.exports = {

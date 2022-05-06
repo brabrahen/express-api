@@ -7,7 +7,8 @@ app.use(cors())
 
 app.use(express.json());
 
-app.use("clothing", route)
+app.use("/clothing", route)
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

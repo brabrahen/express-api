@@ -7,7 +7,7 @@ const findAllClothesCo = (req, res) => {
 
 const byIdCo = (req, res) => {
     const idParam = req.param.id;
-    const chosenClothe = clothingService.findClothingByIdService();
+    const chosenClothe = clothingService.findClothingByIdService(idParam);
     res.send(chosenClothe);
 }
 
