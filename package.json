@@ -1,9 +1,32 @@
 {
+  "name": "express-api",
+  "version": "1.0.0",
+  "description": "In this project I build an API for a clothing store and probably will use with my friend in our store in the future.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brabrahen/express-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brabrahen/express-api/issues"
+  },
+  "homepage": "https://github.com/brabrahen/express-api#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.3"
   },
-  "devDependencies": {
+  "devDependecies": {
     "nodemon": "^2.0.15"
   }
 }
