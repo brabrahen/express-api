@@ -35,7 +35,29 @@ const findClothingByIdService = (idParam) => {
   return clothes.find((clothes) => clothes.id == idParam);
 };
 
+const createClotheService = (newClothe) => {
+  const newId = newClothe.lenght + 1;
+  newClothe.id = newId;
+  clothes.push(newClothe);
+  return newClothe;
+};
+
+const updateClothesService = (idParam, clotheEdit) => {
+  clotheEdit['id'] = id;
+  const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
+  clothes[clotheIndex] = clotheEdit;
+  return clotheEdit;
+};
+
+const deleteClotheService = (idParam) => {
+  const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
+  return clothes.splice(clotheIndex, 1);
+};
+
 module.exports = {
-    findClothingService,
-    findClothingByIdService,
-}
+  findClothingService,
+  findClothingByIdService,
+  createClotheService,
+  updateClothesService,
+  deleteClotheService,
+};
