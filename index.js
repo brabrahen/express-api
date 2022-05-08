@@ -12,6 +12,5 @@ connectDB();
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
-  console.log('OK, sou incrivel!');
-  console.log('só tem 4 arquivos aqui e eu nao to achando o erro');
+  console.log('Completinho em express papai');
 });

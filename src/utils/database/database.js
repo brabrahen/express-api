@@ -6,7 +6,7 @@ function ConnectDB() {
     useUnifiedTopology: true,
   })
   .then(()=> {
-      console.log("MONGO CONECTADO")
+      console.log("MongoDB conectado!")
   })
   .catch((err) => {
       return console.log(`Deu ruim meu bom ${err}`)
