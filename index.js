@@ -6,9 +6,10 @@ const app = express();
 
 app.use(cors())
 app.use(express.json());
-app.use('/clothing', route)
+app.use('/clothes', route)
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
   console.log("OK, sou incrivel!")
+  console.log('só tem 4 arquivos aqui e eu nao to achando o erro')
 });

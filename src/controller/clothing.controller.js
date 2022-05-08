@@ -1,39 +1,43 @@
-const clothingService = require('../services/clothing.service');
+const clothesService = require('../services/clothing.service');
 
 const findAllClothesCo = (req, res) => {
-  const AllClothes = clothingService.findClothingService();
+  const AllClothes = clothesService.findClotheSe();
   res.send(AllClothes);
 };
 
-const byIdCo = (req, res) => {
-  const idParam = req.param.id;
-  const chosenClothe = clothingService.findClothingByIdService(idParam);
+const findByIdCo = (req, res) => {
+  const idParam = Number(req.param.id);
+  const chosenClothe = clothesService.findClotheByIdSe(idParam);
   res.send(chosenClothe);
 };
 
-const createClotheController = (req, res) => {
-  const clothe = req.body;
-  const newClothe = clothingService.createClotheService(clothe);
+const createClotheCo = (req, res) => {
+  const clothes = req.body;
+
+  if (!clothes || !clothes.description || clothes.price || clothes.outfit) {
+    return res.send({ message: 'envie o objeto completo' });
+  }
+  const newClothe = clothesService.createClotheSe(clothes);
   res.send(newClothe);
 };
 
-const updateClotheController = (req, res) => {
-  const idParam = Number (req.params.id);
+const updateClotheCo = (req, res) => {
+  const idParam = Number(req.params.id);
   const clotheEdit = req.body;
-  const updateCLothe = clothingService.updateClothesService(idParam, clotheEdit);
+  const updateCLothe = clothesService.updateClotheSe(idParam, clotheEdit);
   res.send(updateCLothe);
 };
 
-const deleteClothingController = (req, res) => {
-    const idParam = req.params.id;
-    clothingService.deleteClotheService(idParam);
-    res.send({ message: 'Paleta deletada com sucesso!' })
+const deleteClotheCo = (req, res) => {
+  const idParam = req.params.id;
+  clothesService.deleteClotheSe(idParam);
+  res.send({ message: 'Paleta deletada com sucesso!' });
 };
 
 module.exports = {
   findAllClothesCo,
-  byIdCo,
-  createClotheController,
-  updateClotheController,
-  deleteClothingController,
+  findByIdCo,
+  createClotheCo,
+  updateClotheCo,
+  deleteClotheCo,
 };

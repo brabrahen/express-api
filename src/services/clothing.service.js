@@ -16,7 +16,6 @@ const clothes = [
       'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.legiaodosherois.com.br%2F2022%2Fmegumi-fushiguro-jujutsu-kaisen.html&psig=AOvVaw0SVvjrkzSchp3M_o2HawqC&ust=1651883266387000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCNih-PHOyfcCFQAAAAAdAAAAABAD',
     price: 119.9,
   },
-
   {
     id: 3,
     outfit: 'The creation of Itadori sweatshirt',
@@ -27,37 +26,37 @@ const clothes = [
   },
 ];
 
-const findClothingService = () => {
+const findClotheSe = () => {
   return clothes;
 };
 
-const findClothingByIdService = (idParam) => {
+const findClotheByIdSe = (idParam) => {
   return clothes.find((clothes) => clothes.id == idParam);
 };
 
-const createClotheService = (newClothe) => {
+const createClotheSe = (newClothe) => {
   const newId = newClothe.lenght + 1;
   newClothe.id = newId;
   clothes.push(newClothe);
   return newClothe;
 };
 
-const updateClothesService = (idParam, clotheEdit) => {
+const updateClotheSe = (idParam, clotheEdit) => {
   clotheEdit['id'] = id;
   const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
   clothes[clotheIndex] = clotheEdit;
   return clotheEdit;
 };
 
-const deleteClotheService = (idParam) => {
+const deleteClotheSe = (idParam) => {
   const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
   return clothes.splice(clotheIndex, 1);
 };
 
 module.exports = {
-  findClothingService,
-  findClothingByIdService,
-  createClotheService,
-  updateClothesService,
-  deleteClotheService,
+  findClotheSe,
+  findClotheByIdSe,
+  createClotheSe,
+  updateClotheSe,
+  deleteClotheSe,
 };

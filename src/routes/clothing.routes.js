@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const controllerClothing = require('../controller/clothing.controller')
+const controllerClothe = require('../controller/clothing.controller')
 
-router.get('/all', controllerClothing.findAllClothesCo);
-router.get('/clothes/:id', controllerClothing.byIdCo);
-router.post('/crate', controllerClothing.createClotheController);
-router.put('update/:id', controllerClothing.updateClotheController);
-router.delete('delete/:id', controllerClothing.deleteClothingController)
+router.get('/all', controllerClothe.findAllClothesCo);
+router.get('/byid/:id', controllerClothe.findByIdCo);
+router.post('/create', controllerClothe.createClotheCo);
+router.put('update/:id', controllerClothe.updateClotheCo);
+router.delete('delete/:id', controllerClothe.deleteClotheCo)
 
 module.exports = router
