@@ -1,56 +1,77 @@
-const clothes = [
-  {
-    id: 1,
-    outfit: 'Nobara Black t-shirt',
-    description: 'A perfect outfit for a Nobara´s fan',
-    picture:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.ign.com%2Fjujutsu-kaisen%2F89744%2Ffeature%2Fjujutsu-kaisen-cosplay-de-nobara-vai-libertar-sua-maldicao&psig=AOvVaw2H15t0Rh10JHB8VJduJsjC&ust=1651883160203000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCNCdwbrOyfcCFQAAAAAdAAAAABADZ',
-    price: 89.99,
-  },
-  {
-    id: 2,
-    outfit: 'Megumi Ying-yang long sleeve',
-    description:
-      'In this winter, instead of cuddle with someone real, cuddle with Megumi Fushiguro and his wolves',
-    picture:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.legiaodosherois.com.br%2F2022%2Fmegumi-fushiguro-jujutsu-kaisen.html&psig=AOvVaw0SVvjrkzSchp3M_o2HawqC&ust=1651883266387000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCNih-PHOyfcCFQAAAAAdAAAAABAD',
-    price: 119.9,
-  },
-  {
-    id: 3,
-    outfit: 'The creation of Itadori sweatshirt',
-    description: 'Why not be hugged by two?!',
-    picture:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.ign.com%2Fjujutsu-kaisen%2F89723%2Fnews%2Fesse-cosplay-de-sukuna-ryomen-e-classe-especial&psig=AOvVaw0mFRfN1i430FBsp07zMMe5&ust=1651883481542000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCOicu9TPyfcCFQAAAAAdAAAAABAD',
-    price: 199.9,
-  },
-];
+const clothes = require('../utils/models/clothing.model');
 
-const findClotheSe = () => {
-  return clothes;
+const findClotheSe = async () => {
+  try {
+    const clothes = await paleta.find();
+    if (clothes !== undefined) {
+      return clothes;
+    } else {
+      throw new Error({ message: 'Erro ao encontrar peça' });
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const findClotheByIdSe = (idParam) => {
-  return clothes.find((clothes) => clothes.id == idParam);
+const findClotheByIdSe = async (id) => {
+  const clothesById = await clothes.findById(id);
+  console.log(clothesById);
+  if (!clothesById) {
+    throw new Error({ message: 'Nenhuma peça encontrada' });
+  }
+
+  return clothesById;
 };
 
-const createClotheSe = (newClothe) => {
-  const newId = newClothe.lenght + 1;
-  newClothe.id = newId;
-  clothes.push(newClothe);
-  return newClothe;
+const createClotheSe = async (newClothe) => {
+  if (newClothe === undefined) {
+    throw new Error({ message: 'Nenhum dado recebido' });
+  }
+  if (newClothe.outfit === undefined || newClothe.picture === '') {
+    console.log('Validou');
+    throw new Error({ message: 'O produto deve conter imagem' });
+  }
+  if (newClothe.price <= 0) {
+    throw new Error({ message: 'O preço deve ser maior que zero' });
+  }
+  if (newClothe.description === undefined) {
+    throw new Error({ message: 'A peça deve ter descrição' });
+  }
+
+  try {
+    await clothes.create(newClothe);
+    return newClothe;
+  } catch (err) {
+    console.log(err);
+    throw new Error({ message: err });
+  }
 };
 
-const updateClotheSe = (idParam, clotheEdit) => {
-  clotheEdit['id'] = id;
-  const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
-  clothes[clotheIndex] = clotheEdit;
-  return clotheEdit;
+const updateClotheSe = async (id, clotheEdited) => {
+  try {
+    if (
+      !clotheEdited.outfit &&
+      !clotheEdited.description &&
+      clotheEdited.picture
+    ) {
+      throw new Error({ message: 'Não recebemos nenhuma peça!' });
+    }
+
+    const clothesById = await clothe.findByIdAndUpdate(id, clotheEdited);
+    return clothesById;
+  } catch (err) {
+    console.log(err);
+    throw new Error(err);
+  }
 };
 
-const deleteClotheSe = (idParam) => {
-  const clotheIndex = clothes.findIndex((clothe) => clothe.id == idParam);
-  return clothes.splice(clotheIndex, 1);
+const deleteClotheSe = async (id) => {
+  try {
+    const clothesById = await clothes.findByIdAndDelete(id);
+    return { message: 'Peça de roupa deletada com sucesso'}
+  } catch (err) {
+    throw new Error({ message: 'Não foi possível exclui esse item!'})
+  }
 };
 
 module.exports = {
