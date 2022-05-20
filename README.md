@@ -46,11 +46,13 @@ I made it to study and practice my back end abilities.
  </div>
 
  ### Utils
+ 
  #### - This paste was splited in two parts
 
 <div>
     <img align="center" alt="utils" height="180" width="640" src="https://i.imgur.com/wYZroL5.png">
 </div>
+
 ####
 - Database
     There we have the function connecting Mongo with the API
@@ -58,7 +60,9 @@ I made it to study and practice my back end abilities.
 <div>
     <img align="center" alt="database" src="https://i.imgur.com/pHCh1PI.png">
 </div>
+
 ####
+
 - Models
     Here is just a Schema for MongoDB
 
@@ -77,8 +81,8 @@ I made it to study and practice my back end abilities.
 <div>
     <img align="center" alt="index" src="https://i.imgur.com/1r5rPDe.png">
 </div>
-###
-______________________________________________________________________________________________________________
+
+_______________________________________________________________________________________________________________________________________________
 
 That´s all folks, thanks for reading! 
     You can reach me on instagram @chocottone_
