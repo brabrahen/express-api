@@ -1,8 +1,8 @@
-const clothes = require('../utils/models/clothing.model');
+const clothe = require('../utils/models/clothing.model');
 
 const findClotheSe = async () => {
   try {
-    const clothes = await paleta.find();
+    const clothes = await clothe.find();
     if (clothes !== undefined) {
       return clothes;
     } else {
@@ -14,14 +14,17 @@ const findClotheSe = async () => {
 };
 
 const findClotheByIdSe = async (id) => {
-  const clothesById = await clothes.findById(id);
+  const clothesById = await clothe.findById(id);
   console.log(clothesById);
-  if (!clothesById) {
-    throw new Error({ message: 'Nenhuma peça encontrada' });
+  if (clothesById === undefined) {
+    throw new Error ({ message: 'Nenhuma peça foi encontrada'})
+  } else {
+    return clothesById
   }
+    
+}
 
-  return clothesById;
-};
+
 
 const createClotheSe = async (newClothe) => {
   if (newClothe === undefined) {
@@ -39,7 +42,7 @@ const createClotheSe = async (newClothe) => {
   }
 
   try {
-    await clothes.create(newClothe);
+    await clothe.create(newClothe);
     return newClothe;
   } catch (err) {
     console.log(err);
@@ -67,7 +70,7 @@ const updateClotheSe = async (id, clotheEdited) => {
 
 const deleteClotheSe = async (id) => {
   try {
-    const clothesById = await clothes.findByIdAndDelete(id);
+    const clothesById = await clothe.findByIdAndDelete(id);
     return { message: 'Peça de roupa deletada com sucesso'}
   } catch (err) {
     throw new Error({ message: 'Não foi possível exclui esse item!'})

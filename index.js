@@ -1,9 +1,12 @@
 const express = require('express');
+require('dotenv').config()
 const cors = require('cors');
-const port = 5000;
-const route = require('./src/routes/clothing.routes');
+const port = process.env.PORT || 3000;
 const app = express();
+
+
 const connectDB = require('./src/utils/database/database');
+const route = require('./src/routes/clothing.routes');
 
 app.use(cors());
 app.use(express.json());
@@ -12,6 +15,6 @@ connectDB();
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
-  console.log('Completinho em express papai');
+  
 });
 

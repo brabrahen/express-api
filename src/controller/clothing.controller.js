@@ -2,7 +2,7 @@ const clothesService = require('../services/clothing.service');
 
 const findAllClothesCo = async (req, res) => {
   const AllClothes = await clothesService.findClotheSe();
-  res.sataut(200).send(AllClothes);
+  res.status(200).send(AllClothes);
 };
 
 const findByIdCo = async (req, res) => {
