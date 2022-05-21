@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "clothing.routes.js"
+      "dest": "index.js"
     }
   ]
 }
