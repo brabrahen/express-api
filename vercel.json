@@ -2,14 +2,15 @@
     "version": 2,
     "builds": [
       {
-        "src": "clothing.routes.js",
+        "src": "./index.js",
         "use": "@now/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "clothing.routes.js"
+        "dest": "/all"
       }
     ]
   }
+

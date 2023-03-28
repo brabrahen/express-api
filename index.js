@@ -10,7 +10,7 @@ const route = require('./src/routes/clothing.routes');
 
 app.use(cors());
 app.use(express.json());
-app.use('/', route);
+app.use('/all', route);
 connectDB();
 
 app.listen(port, () => {
